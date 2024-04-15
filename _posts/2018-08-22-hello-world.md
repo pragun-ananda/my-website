@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Hello World
+title: Reflection on my research experience at Google 
 categories:
-- General
+- Research
 ---
 
-This is my very first blog post. I haven't written anything yet but I'm sure I have some great stories to tell.
+Stay tuned.
