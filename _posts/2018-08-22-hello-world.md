@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reflection on my research experience at Google 
+title: Working on TextGenShap - Shapley values for LLM Output
 categories:
 - Research
 ---
