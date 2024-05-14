@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Working on TextGenShap - Shapley values for LLM Output
+title: TextGenShap - Shapley values for LLM Output
 categories:
 - Research
+- Interpretability
 ---
 
 Stay tuned.
