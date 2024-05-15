@@ -6,7 +6,7 @@ categories:
 - Research
 ---
 
-This blog post describes my experience working as a research engineer on Google’s [Cloud AI research team](https://research.google/teams/cloud-ai/). The work was focused on TextGenShap ([Enounen et al., 2023](https://arxiv.org/abs/2312.01279)), an efficient method to explain LLM generated output. Included in this blog post is an (1) overview of the paper, (2) a description of the work that I did on the project, and (3) my main takeaways. Feel free to skip to the sections that seem the most interesting to you.
+This blog post describes my experience working as a research engineer on Google’s [Cloud AI research team](https://research.google/teams/cloud-ai/). The work was focused on TextGenShap ([Enounen et al., 2023](https://arxiv.org/abs/2312.01279)), a method to efficiently generate explainability scores for LLM generated output. The research shows that in the context of using LLMs for information retrieval (specifically for long-document question answering), we can get good results by ranking candidate answers by their explainability scores. My focus on this project was extending the algorithm's implementation to support recent models (Gemma, Llama 3) and arbitrary datasets. I also spent time refactoring the bare-bones implementation to a production quality version. Included in this blog post is an (1) overview of the research method, (2) a description of the work that I did on the project, and (3) my main takeaways. Feel free to skip to the sections that seem the most relevant to you.
 
 # Paper Overview
 
