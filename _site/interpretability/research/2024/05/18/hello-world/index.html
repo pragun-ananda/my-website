@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+			<title>TextGenShap - Shapley values for LLM Output - My blog</title>
+		
+
+		<link rel="stylesheet" href="/assets/styles.css">
+
+		
+			<link rel="shortcut icon" href="https://1.gravatar.com/avatar/401dfb2f2c7728e4fc8c42045837dd29a995bb3fba999d53cd4f9f19c56b0d8d?size=512">
+		
+
+	</head>
+	<body>
+
+		<header class="header">
+  <div class="container">
+    <a class="logo" href="/">
+  <img src="https://1.gravatar.com/avatar/401dfb2f2c7728e4fc8c42045837dd29a995bb3fba999d53cd4f9f19c56b0d8d?size=512" alt="My blog logo"/>
+</a>
+
+    <nav class="nav">
+  <ul class="list list--nav">
+    
+      
+    
+      
+        <li class="item  item--nav">
+          
+            <a href="/about/">About Me</a>
+          
+        </li>
+      
+    
+      
+        <li class="item  item--nav">
+          
+            
+            <a href="/">Blog</a>
+          
+        </li>
+      
+    
+      
+    
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+
+<main class="main  container">
+
+	<article class="article  article--post  content  typeset">
+
+    <h1>TextGenShap - Shapley values for LLM Output</h1>
+		
+
+<small class="small  post-meta">
+  
+    
+      <span class="label  label--category">Interpretability</span>,
+    
+      <span class="label  label--category">Research</span>
+    
+  &nbsp;&middot;&nbsp;<time datetime="2024-05-18T00:00:00-04:00" class="time">18 May 2024</time>
+</small>
+
+    <p>This blog post describes my experience working as a research engineer on Google’s <a href="https://research.google/teams/cloud-ai/">Cloud AI research team</a>. The work was focused on TextGenShap (<a href="https://arxiv.org/abs/2312.01279">Enounen et al., 2023</a>), a method to efficiently generate explainability scores for LLM generated output. The research shows that in the context of using LLMs for information retrieval (specifically for long-document question answering), we can get good results by ranking candidate answers by their explainability scores. My focus on this project was extending the algorithm’s implementation to support recent models (like <a href="https://ai.google.dev/gemma">Gemma</a> and <a href="https://llama.meta.com/llama3/">Llama 3</a>) and arbitrary datasets. I also spent time refactoring the bare-bones implementation to a production quality version. Included in this blog post is an (1) overview of the research method, (2) a description of the work that I did on the project, and (3) my main takeaways. Feel free to skip to the sections that seem the most relevant to you. All of the code for the paper is open-sourced <a href="https://github.com/google-research/google-research/tree/master/llm_longdoc_interpretability">here</a> on Github.</p>
+
+<h1 id="research-overview">Research Overview</h1>
+
+<p>LLMs excel at massively multi-task learning (ex: summarization, retrieval, few-shot learning to name a few.). Oftentimes, their aptitude in different settings is difficult to explain. This commonly leads to LLMs being treated as a black-box. Interpretability is the branch of machine learning focused on understanding a machine learning model’s predictions.</p>
+
+<p>A traditional method of explaining feature attribution in machine learning is through Shapley values (<a href="https://arxiv.org/abs/1705.07874">Lundberg and Lee et al., 2017</a>). Shapley values are well-suited for discriminative tasks (ex: classification or regression). They answer the question: “How much has each feature value contributed to this prediction compared to the average prediction?” (Source: <a href="https://christophm.github.io/interpretable-ml-book/shapley.html">Interpretable ML book</a>).</p>
+
+<p>They are not, however, well-suited for generative tasks - not to mention that they are expensive to compute for LLMs, especially when context length is large. TextGenShap adapts the conventional Shapley value to one that works for generative LLM output. It also takes advantage of the hierarchical structure of long-form text to represent and efficiently compute explainability values at different granularity levels (ex: document-level, sentence-level, and word-level). It achieves speedups through several architectural optimizations to T5 (<a href="https://arxiv.org/abs/1910.10683">Raffel et al., 2020</a>), the model used for inference. Implemented optimizations include FlashAttention (<a href="https://arxiv.org/abs/2205.14135">Dao et al., 2022</a>), speculative decoding (<a href="https://arxiv.org/abs/2211.17192">Leviathan et al., 2022</a>, <a href="https://arxiv.org/abs/2305.09781">Miao et al., 2023</a>), and in-place encoder resampling.</p>
+
+<p>The datasets used in experiments are (1) NaturalQuestions (<a href="https://aclanthology.org/Q19-1026/">Kwiatkowski et al., 2019</a>) and (2) MIRACL (<a href="https://arxiv.org/abs/2210.09984">Zhang et al., 2022</a>), Wikipedia datasets designed for open-domain or long-document question answering.</p>
+
+<h1 id="personal-contributions">Personal Contributions</h1>
+
+<p>My overall role on the project was to convert the existing research experiment code to a production-grade version running on Google Cloud AI infrastructure to support demos to several leadership teams in Google Cloud Research and Google Deepmind. This includes:</p>
+
+<ul>
+  <li>Building an inference abstraction that supports newer models (Llama3, Gemma, Gemini) not just T5 (which was used in initial experiments).</li>
+  <li>Adding the containerization, model deployment, and TextGenShap batch job infrastructure on Vertex. Later, building serving support for real-time execution was a separate requirement.</li>
+  <li>Tuning several algorithm hyperparameters (permutation sampling, granularity of document hierarchies) to achieve a reasonable tradeoff between accuracy and latency for batch execution vs. real-time execution.</li>
+  <li>Meeting with different stakeholders to understand use cases for Cloud AI customers and  running experiments with differently structured datasets to show TextGenShap’s use cases in long-document information retrieval.</li>
+</ul>
+
+<h1 id="main-takeaways">Main Takeaways</h1>
+
+<p>I really enjoyed working on this project for a few reasons:</p>
+
+<ul>
+  <li>I was able to collaborate deeply with several influential AI researchers, especially in the field of interpretability.</li>
+  <li>I enjoy working on ML infrastructure and this project had some interesting opportunities to make engineering tradeoffs along the way.</li>
+  <li>I’m really excited about applied research - reading a research paper and being able to apply its methods in production is super rewarding. It feels like you’re really helping build the future.</li>
+</ul>
+
+<p>My work on this project for Google’s Cloud AI Research team was actually entirely voluntary. Google supports employee side projects through what it calls “20% projects” meaning my involvement was a 20% time commitment I chose to make in addition to my full-time role as a machine learning engineer working on Google’s core search infrastructure. For me, working on this project was an obvious choice since I want to work in applied research. Anyways, maybe describing my full-time role can be a topic for another blog post :)</p>
+
+
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="copyright  typeset">
+      <small class="small">&copy; My blog 2024</small>
+    </div>
+  </div>
+</footer>
+
+
+
+		<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,400i,700|Neuton:400,700" rel="stylesheet">
+	</body>
+</html>
