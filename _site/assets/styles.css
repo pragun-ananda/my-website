@@ -487,7 +487,7 @@ a:hover, a:active, a:focus {
   background-position: 0 93%;
   background-repeat: repeat-x;
   background-size: 100% 0.15rem;
-  text-shadow: 0.1rem 0 #c79776, 0.15rem 0 #c79776, -0.1rem 0 #c79776, -0.15rem 0 #c79776;
+  text-shadow: 0.1rem 0 #fdc39b, 0.15rem 0 #fdc39b, -0.1rem 0 #fdc39b, -0.15rem 0 #fdc39b;
 }
 .typeset p a:hover, .typeset p a:active, .typeset p a:focus, .typeset li a:hover, .typeset li a:active, .typeset li a:focus {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #964c23 50%);
@@ -1050,7 +1050,7 @@ a:hover, a:active, a:focus {
   padding-top: 3rem;
 }
 .typeset code, .typeset pre {
-  background-color: #c08964;
+  background-color: #fdb482;
   font-family: Menlo, monospace;
 }
 .typeset pre {
@@ -1313,7 +1313,7 @@ a:hover, a:active, a:focus {
   color: #009999;
 } /* Literal.Number.Integer.Long */
 body {
-  background: #c79776;
+  background: #fdc39b;
   color: #603116;
   height: 100%;
   display: flex;
@@ -1378,7 +1378,7 @@ body {
   -moz-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  background: #b87c52;
+  background: #fca569;
 }
 
 .logo {
@@ -1399,7 +1399,7 @@ body {
 }
 
 .footer {
-  border-top: 1px solid #ab6f46;
+  border-top: 1px solid #fc9650;
 }
 
 .nav--paginator {
@@ -1496,14 +1496,14 @@ video {
 .typeset button {
   background-image: none;
   text-shadow: none;
-  color: #c79776;
+  color: #fdc39b;
 }
 .typeset .button:hover, .typeset .button:active, .typeset .button:focus,
 .typeset button:hover,
 .typeset button:active,
 .typeset button:focus {
   background-image: none;
-  color: #c79776;
+  color: #fdc39b;
 }
 .typeset hr {
   width: 100%;
