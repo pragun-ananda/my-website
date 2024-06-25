@@ -12,6 +12,6 @@ Some links that might be of interest are my **[resume](/assets/pragun-resume.pdf
 On a personal note, some of my favorite things to do are:
 1. **Dancing** - I love bollywood and salsa, but I'm trying to get into hip-hop right now
 2. **Discovering new music** - I probably have too many spotify playlists
-3. **Binge a good show** - currently watching Breaking Bad
+3. **Binging a good book or show** - I'm currently watching Breaking Bad
 
-I'm also trying to learn how to speak Kannada and sing, but I'm bad at both so they are not my favorite things to do at the moment.
+I'm also trying to learn how to speak Kannada and sing, but I'm bad at both so they are not my favorite things to do right now.
