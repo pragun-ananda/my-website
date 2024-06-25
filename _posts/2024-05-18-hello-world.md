@@ -31,8 +31,16 @@ My overall role on the project was to convert the existing research experiment c
 
 I really enjoyed working on this project for a few reasons:
 
-- I was able to collaborate deeply with several influential AI researchers, especially in the field of interpretability.
-- I enjoy working on ML infrastructure and this project had some interesting opportunities to make engineering tradeoffs along the way.
-- I’m really excited about applied research - reading a research paper and being able to apply its methods in production is super rewarding. It feels like you’re really helping build the future.
+1) I was exposed to and able to collaborate with several influential AI researchers, specifically in the field of interpretability/explainability. 
 
-My work on this project for Google’s Cloud AI Research team was actually entirely voluntary. Google supports employee side projects through what it calls “20% projects” meaning my involvement was a 20% time commitment I chose to make in addition to my full-time role as a machine learning engineer working on Google’s core search infrastructure. For me, working on this project was an obvious choice since I want to work in applied research. Anyways, maybe describing my full-time role can be a topic for another blog post :)
+I'm so grateful that I was introduced the field of interpretability through this project. Over the past year, I've tried to build intuition as to what area of AI research I'd be interested in pursuing a PhD in. Personally, I'd love to work in an area that has social impact as well interesting engineering challenges. As I've learned more about interpretability, I think it might be a great fit.
+
+Unfortunately, the field of interpretability does not get as much attention as it deserves considering the rapid progress in AI we see today has enormous implications on future society. If we don't develop a deeper understanding of AI systems, it's impossible to have control over how they're applied. I sadly don't see a large investment in this research area from any major AI lab aside from Anthropic. By far, the biggest investments I see are directed at answering the question: "How do we make these models bigger and better?. 
+
+2) I've always enjoyed working on infrastructure problems and this project had some interesting opportunities to make engineering tradeoffs along the way.
+
+The driving force behind me joining Google out of college was my interest in learning how the biggest software systems in the world are built. I now work on Google's core search infrastructure and it's fascinating to see the scale that the company operates at.  
+
+3) I've always wanted to work in research. I love learning and I love working with people. Research has endless opportunities to learn and grow from others, as well as to teach others. 
+
+My work on this project for Google’s Cloud AI Research team was actually entirely voluntary. Google supports employee side projects through what it calls “20% projects” meaning my involvement was a 20% time commitment I chose to make in addition to my full-time role. For me, working on this project was an obvious choice since I eventually want to work as an AI researcher full-time. Anyways, maybe describing my current full-time role can be a topic for another blog post :)
